@@ -1,0 +1,16 @@
+[Unit]
+Description=OAP Sensor ODB2 Injection Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+ExecStart=/usr/bin/python3 /usr/local/bin/oap-api/OAP_sensor_inject.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=file:/home/pi/Logs/OAP_sensor_inject.log
+StandardError=file:/home/pi/Logs/OAP_sensor_inject.error
+
+[Install]
+WantedBy=multi-user.target
